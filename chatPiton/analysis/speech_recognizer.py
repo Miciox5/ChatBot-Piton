@@ -1,6 +1,5 @@
 import speech_recognition as sr
 
-
 def recognizer():
     # obtain audio from the microphone
     r = sr.Recognizer()

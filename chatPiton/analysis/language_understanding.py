@@ -1,9 +1,16 @@
 import spacy
 from spacy import displacy
 from db.potion_dictionary import pos_words, neg_words, ingredients
+
+import nltk
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('words')
+
 from nltk.corpus import words, stopwords
 from nltk import WordNetLemmatizer, word_tokenize
 import string
+
 
 stop = stopwords.words('english')
 punct = string.punctuation + '’'

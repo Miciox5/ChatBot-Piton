@@ -6,9 +6,9 @@ import warnings
 from dm.context_model import Intent
 from analysis import speech_recognizer
 
-warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning)
-warnings.filterwarnings(action='ignore', category=torch.jit.TracerWarning)  # suppress TracerWarning
-warnings.warn('User provided device_type of \'cuda\', but CUDA is not available. Disabling')
+# warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning)
+# warnings.filterwarnings(action='ignore', category=torch.jit.TracerWarning)  # suppress TracerWarning
+# warnings.warn('User provided device_type of \'cuda\', but CUDA is not available. Disabling')
 
 if __name__ == '__main__':
     # crea manager e inizializza il contesto
@@ -32,5 +32,5 @@ if __name__ == '__main__':
             # print('frame')
             # print(dialog_manager.dialog_context_model.context.show_attributes())
             # print()
-            #audio = speech_recognizer.recognizer()
+            # audio = speech_recognizer.recognizer()
             dialog_manager.user_input(input('Potter: '))
