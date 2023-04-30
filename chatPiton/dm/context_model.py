@@ -59,7 +59,9 @@ class DialogContextModel:
         self.context = None
 
     def __call__(self, *args, **kwargs):
+        # TO-DO: Import del file json con le pozioni all'interno
         potion = random.choice(list(potions))
+        print(potion)
         if potion == 'polyjuice':
             self.context = frames.PolyjuiceFrame()
         elif potion == 'armadillo bile mixture':

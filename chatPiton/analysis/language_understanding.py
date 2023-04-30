@@ -15,7 +15,8 @@ import string
 stop = stopwords.words('english')
 punct = string.punctuation + '’'
 lemmatizer = WordNetLemmatizer()
-nlp = spacy.load('en_core_web_trf')
+# nlp = spacy.load('en_core_web_trf')
+nlp = spacy.load('it_core_news_sm')
 
 
 def check_sentence(sentence):

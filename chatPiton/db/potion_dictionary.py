@@ -1,7 +1,7 @@
 potions = {
     "polyjuice": ['fluxweed', 'knotgrass', 'lacewing flies', 'leeches', 'horn of bicorn', 'boomslang skin', 'hair'],
-    "armadillo bile mixture": ['bat wings', 'armadillo bile', 'wormwood', 'amorentia', 'acromantula venom',
-                               'aconite', 'water'],
+    "armadillo bile mixture": ['bat wings', 'armadillo bile', 'wormwood', 'amorentia',
+                               'acromantula venom','aconite', 'water'],
     "animagus": ['mandrake leaf', 'hair', 'dew', 'death\'s-head hawk chrysalis']}
 
 ingredients = ['fluxweed', 'knotgrass', 'lacewing flies', 'leeches', 'horn of bicorn', 'boomslang skin',

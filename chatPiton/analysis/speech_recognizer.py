@@ -10,6 +10,7 @@ def recognizer():
 
     # recognize speech using Google Speech Recognition
     try:
+        # return r.recognize_google(audio, language="it-IT")
         return r.recognize_google(audio)
     except sr.UnknownValueError:
         print("Google Speech Recognition could not understand audio")

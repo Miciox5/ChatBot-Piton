@@ -7,7 +7,7 @@ class TextToSpeech:
         super().__init__()
         self._engine = pyttsx3.init()
         self._voices = self._engine.getProperty('voices')
-        self._engine.setProperty('voice', self._voices[7].id)
+        self._engine.setProperty('voice', self._voices[3].id)
         # self._engine.setProperty('voice', 'com.apple.speech.synthesis.voice.daniel') # inserire qui la voce del personaggio Snape
 
     def say(self, sentence):
