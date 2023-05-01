@@ -30,7 +30,7 @@ class DialogControl:
             self._n_questions -= 1
 
             ingredient = None
-            if intent == Intent.HANDSHAKE:  # la seconda interazione chiede gli ingredienti della pozione asociata al frame --> tutti gli ingredienti sono in 'expected'
+            if intent == Intent.HANDSHAKE:  # la seconda interazione chiede gli ingredienti della pozione associata al frame --> tutti gli ingredienti sono in 'expected'
                 self._dialog_context_model.memory.system_update(intent=Intent.INGREDIENTS, expected=potions[potion])
                 return self._response_generator.initiate_exam(potion)
             else:  # entro qui a partire dalla terza volta che Piton parla

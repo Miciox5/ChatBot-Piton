@@ -1,4 +1,6 @@
 import random
+
+from db.import_data_json import get_all_potions
 from db.potion_dictionary import potions, ingredients, pos_words, neg_words
 from dm import frames
 from analysis import language_understanding as lu
@@ -61,13 +63,12 @@ class DialogContextModel:
     def __call__(self, *args, **kwargs):
         # TO-DO: Import del file json con le pozioni all'interno
         potion = random.choice(list(potions))
-        print(potion)
-        if potion == 'polyjuice':
-            self.context = frames.PolyjuiceFrame()
-        elif potion == 'armadillo bile mixture':
-            self.context = frames.ArmadilloBileMixtureFrame()
-        elif potion == 'animagus':
-            self.context = frames.AnimagusFrame()
+
+        # potion = random.choice(get_all_potions())
+        #print(potion)
+
+        # Put all data about those potion in frame struct
+        self.context = frames.PotionFrame(potion)
 
     def process_input(self, sentence):
         intent = self.memory.get_data_frame()['intent'].values[-1]
