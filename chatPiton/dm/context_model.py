@@ -72,7 +72,7 @@ class DialogContextModel:
             self.context = frames.LivingDeatchDistillateFrame()
 
 
-def process_input(self, sentence):
+    def process_input(self, sentence):
         intent = self.memory.get_data_frame()['intent'].values[-1]
         expected = self.memory.get_data_frame()['expected'].values[-1]
         subtrees = lu.parse_sentence(sentence)

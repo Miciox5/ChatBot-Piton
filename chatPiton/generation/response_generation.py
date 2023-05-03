@@ -83,8 +83,8 @@ class ResponseGenerator:
                       'It\'s nice to see that nearly six years of magical education have been wasted on you, Potter.',
                       'You are just as useless as your father Potter, you failed this exam'][
                 random.randrange(3)]
-        answer += ' Your final evaluation for the Potion\'s class is ' + str(evaluation)
-        return ['Out of all expectations, this exam is over.\n', answer, '.\nI have already spent enough time on you']
+        answer += ' Your final evaluation for the Potion\'s class is ' + str(evaluation) + '.'
+        return ['Out of all expectations, this exam is over.\n', answer, 'I have already spent enough time on you!']
 
     # per risposte sbagliate
     def refusal(self):
