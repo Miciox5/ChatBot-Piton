@@ -30,7 +30,7 @@ class DialogControl:
             self._n_questions -= 1
 
             ingredient = None
-            if intent == Intent.HANDSHAKE:  # la seconda interazione chiede gli ingredienti della pozione associata al frame --> tutti gli ingredienti sono in 'expected'
+            if intent == Intent.HANDSHAKE:  # la seconda interazione chiede gli ingredienti della pozione asociata al frame --> tutti gli ingredienti sono in 'expected'
                 self._dialog_context_model.memory.system_update(intent=Intent.INGREDIENTS, expected=potions[potion])
                 return self._response_generator.initiate_exam(potion)
             else:  # entro qui a partire dalla terza volta che Piton parla
@@ -65,7 +65,8 @@ class DialogControl:
                         # print('wrong: ',set(wrong))
                         # print('set ingredienti', set(potions[potion]))
                     elif i == Intent.Y_N_INGREDIENT:  # scelgo un ingrediente a caso dalla lista degli ingredienti (escludendo quelli già elencati e nel frame) --> in 'expected' Yes/No
-                        ings = [i for i in ingredients if i not in self._dialog_context_model.context.get_ingredients()]
+                        ings = [i for i in ingredients if
+                                i not in self._dialog_context_model.context.get_ingredients()]
                         ingredient = ings[random.randrange(len(ings))]
                         expected = [ingredient in potions[potion], ingredient]
                     else:  # domanda del tipo Yes/No

@@ -30,30 +30,46 @@ class Frame:
                 print(attribute, '=', value)
 
 
-class PotionFrame(Frame):
-    def __init__(self, name):
-        super().__init__()
-        self.name = name
-        self._ingredients = []
-
-    def set_ingredient(self, ingredient):
-        self._ingredients.append(ingredient)
-
-    def get_ingredients(self):
-        return [ingredient.name for ingredient in self._ingredients]
-
-    def is_complete(self):
-        return float(len(self._ingredients) * 100 / len(self.__dict__.items()))
-
-    def show_attributes(self):
-        for attribute, value in self.__dict__.items():
-            if value is not None:
-                print(attribute, '=', value)
-            else:
-                print(attribute, '=', value)
-
-
 class IngredientFrame:
     def __init__(self, name) -> None:
         super().__init__()
         self.name = name
+
+
+class PolyjuiceFrame(Frame):
+    name = 'polyjuice'
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._ingredient1 = None
+        self._ingredient2 = None
+        self._ingredient3 = None
+        self._ingredient4 = None
+        self._ingredient5 = None
+        self._ingredient6 = None
+        self._ingredient7 = None
+
+
+class ArmadilloBileMixtureFrame(Frame):
+    name = 'armadillo bile mixture'
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._ingredient1 = None
+        self._ingredient2 = None
+        self._ingredient3 = None
+        self._ingredient4 = None
+        self._ingredient5 = None
+        self._ingredient6 = None
+        self._ingredient7 = None
+
+
+class AnimagusFrame(Frame):
+    name = 'animagus'
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._ingredient1 = None
+        self._ingredient2 = None
+        self._ingredient3 = None
+        self._ingredient4 = None
