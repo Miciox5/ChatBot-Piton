@@ -36,8 +36,93 @@ class IngredientFrame:
         self.name = name
 
 
-class PolyjuiceFrame(Frame):
-    name = 'polyjuice'
+# class PolyjuiceFrame(Frame):
+#     name = 'polyjuice'
+#
+#     def __init__(self) -> None:
+#         super().__init__()
+#         self._ingredient1 = None
+#         self._ingredient2 = None
+#         self._ingredient3 = None
+#         self._ingredient4 = None
+#         self._ingredient5 = None
+#         self._ingredient6 = None
+#         self._ingredient7 = None
+#
+#
+# class ArmadilloBileMixtureFrame(Frame):
+#     name = 'armadillo bile mixture'
+#
+#     def __init__(self) -> None:
+#         super().__init__()
+#         self._ingredient1 = None
+#         self._ingredient2 = None
+#         self._ingredient3 = None
+#         self._ingredient4 = None
+#         self._ingredient5 = None
+#         self._ingredient6 = None
+#         self._ingredient7 = None
+#
+#
+# class AnimagusFrame(Frame):
+#     name = 'animagus'
+#
+#     def __init__(self) -> None:
+#         super().__init__()
+#         self._ingredient1 = None
+#         self._ingredient2 = None
+#         self._ingredient3 = None
+#         self._ingredient4 = None
+
+class AmortentiaFrame(Frame):
+    name = 'amortentia'
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._ingredient1 = None
+        self._ingredient2 = None
+        self._ingredient3 = None
+        self._ingredient4 = None
+
+
+class ObliviousFrame(Frame):
+    name = 'oblivious'
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._ingredient1 = None
+        self._ingredient2 = None
+        self._ingredient3 = None
+        self._ingredient4 = None
+
+
+class AgeingFrame(Frame):
+    name = 'ageing'
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._ingredient1 = None
+        self._ingredient2 = None
+        self._ingredient3 = None
+        self._ingredient4 = None
+
+
+class FelixFelicisFrame(Frame):
+    name = 'felix felicis'
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._ingredient1 = None
+        self._ingredient2 = None
+        self._ingredient3 = None
+        self._ingredient4 = None
+        self._ingredient5 = None
+        self._ingredient6 = None
+
+
+
+class LivingDeatchDistillateFrame(Frame):
+    name = 'living death distillate'
 
     def __init__(self) -> None:
         super().__init__()
@@ -48,28 +133,3 @@ class PolyjuiceFrame(Frame):
         self._ingredient5 = None
         self._ingredient6 = None
         self._ingredient7 = None
-
-
-class ArmadilloBileMixtureFrame(Frame):
-    name = 'armadillo bile mixture'
-
-    def __init__(self) -> None:
-        super().__init__()
-        self._ingredient1 = None
-        self._ingredient2 = None
-        self._ingredient3 = None
-        self._ingredient4 = None
-        self._ingredient5 = None
-        self._ingredient6 = None
-        self._ingredient7 = None
-
-
-class AnimagusFrame(Frame):
-    name = 'animagus'
-
-    def __init__(self) -> None:
-        super().__init__()
-        self._ingredient1 = None
-        self._ingredient2 = None
-        self._ingredient3 = None
-        self._ingredient4 = None

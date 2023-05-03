@@ -60,14 +60,19 @@ class DialogContextModel:
 
     def __call__(self, *args, **kwargs):
         potion = random.choice(list(potions))
-        if potion == 'polyjuice':
-            self.context = frames.PolyjuiceFrame()
-        elif potion == 'armadillo bile mixture':
-            self.context = frames.ArmadilloBileMixtureFrame()
-        elif potion == 'animagus':
-            self.context = frames.AnimagusFrame()
+        if potion == 'amortentia':
+            self.context = frames.AmortentiaFrame()
+        elif potion == 'oblivious':
+            self.context = frames.ObliviousFrame()
+        elif potion == 'ageing':
+            self.context = frames.AgeingFrame()
+        elif potion == 'felix felicis':
+            self.context = frames.FelixFelicisFrame()
+        elif potion == 'living death distillate':
+            self.context = frames.LivingDeatchDistillateFrame()
 
-    def process_input(self, sentence):
+
+def process_input(self, sentence):
         intent = self.memory.get_data_frame()['intent'].values[-1]
         expected = self.memory.get_data_frame()['expected'].values[-1]
         subtrees = lu.parse_sentence(sentence)
