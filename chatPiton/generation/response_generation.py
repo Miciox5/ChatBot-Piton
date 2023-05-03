@@ -79,12 +79,12 @@ class ResponseGenerator:
         else:
             answer = ['I would\'ve expected nothing more from you Potter, I can see you were raised by muggles',
                       # 'Because of your irreverence, the house of Gryffindor lost {}'.format(100-evaluation),
-                      'Because of your irreverence, the house of Gryffindor lost points',
+                      'Because of your irreverence, the house of Gryffindor lost points.',
                       'It\'s nice to see that nearly six years of magical education have been wasted on you, Potter.',
-                      'You are just as useless as your father Potter, you failed this exam'][
+                      'You are just as useless as your father Potter, you failed this exam.'][
                 random.randrange(3)]
-        answer += ' Your final evaluation for the Potion\'s class is ' + str(evaluation)
-        return ['Out of all expectations, this exam is over.\n', answer, '.\nI have already spent enough time on you']
+        answer += ' Your final evaluation for the Potion\'s class is ' + str(evaluation) + '.'
+        return ['Out of all expectations, this exam is over.', answer, '.I have already spent enough time on you.']
 
     # per risposte sbagliate
     def refusal(self):
