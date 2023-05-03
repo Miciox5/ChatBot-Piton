@@ -1,0 +1,4 @@
+{
+  "positive_words": ["yes", "course", "sure", "surely", "do", "always", "yeah", "believe", "so", "think"],
+  "negative_words": ["no", "not", "neither", "never", "none", "nobody", "nothing", "nowhere", "n't"]
+}
