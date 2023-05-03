@@ -15,11 +15,11 @@ import string
 stop = stopwords.words('english')
 punct = string.punctuation + '’'
 lemmatizer = WordNetLemmatizer()
-# nlp = spacy.load('en_core_web_trf')
-nlp = spacy.load('it_core_news_sm')
+nlp = spacy.load('en_core_web_trf')
 
 
 def check_sentence(sentence):
+    sentence = sentence.lower()
     sentence = [lemmatizer.lemmatize(word) for word in word_tokenize(sentence.lower()) if word not in punct]
     bools = [word in words.words() or word in ingredients for word in sentence]
     return (sum(bools) / len(bools)) > 0.5
@@ -28,7 +28,7 @@ def check_sentence(sentence):
 def parse_sentence(sentence):
     doc = nlp(sentence)
 
-    ingredients = [np.text
+    ingredients_ps = [np.text
                    for nc in doc.noun_chunks
                    for np in [nc, doc[nc.root.left_edge.i: nc.root.right_edge.i + 1]]]
 
@@ -39,12 +39,12 @@ def parse_sentence(sentence):
     #     print('root right: ' + str(nc.root.left_edge.i + 1))
     #     print('doc[]: ' + str(doc[nc.root.left_edge.i: nc.root.right_edge.i + 1]))
     #     print()
-    #
+
     # print(ingredients)
 
     #displacy.serve(doc, style="dep", host='127.0.0.1')
 
-    return list(dict.fromkeys(ingredients))
+    return list(dict.fromkeys(ingredients_ps))
 
 
 def is_positive(sentence):

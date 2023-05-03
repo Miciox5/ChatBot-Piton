@@ -61,14 +61,12 @@ class DialogContextModel:
         self.context = None
 
     def __call__(self, *args, **kwargs):
-        # TO-DO: Import del file json con le pozioni all'interno
+        # Import del file json con le pozioni all'interno
         potion = random.choice(list(potions))
+        ingrs_potion = potions[potion]
 
-        # potion = random.choice(get_all_potions())
-        #print(potion)
-
-        # Put all data about those potion in frame struct
-        self.context = frames.PotionFrame(potion)
+        # Mette tutti i dati delle pozioni nella struttura Frame
+        self.context = frames.PotionFrame(potion, ingrs_potion)
 
     def process_input(self, sentence):
         intent = self.memory.get_data_frame()['intent'].values[-1]
@@ -76,36 +74,57 @@ class DialogContextModel:
         subtrees = lu.parse_sentence(sentence)
 
         if lu.check_sentence(sentence):
-            if intent == Intent.HANDSHAKE:
-                self.memory.user_update(sentence=sentence)
-                return
-            elif intent == Intent.INGREDIENTS:
-                right, wrong = [], []
-                for tree in subtrees:
-                    if tree in expected:
-                        right.append(tree)
-                        self.context.set_ingredient(frames.IngredientFrame(str(tree)))
-                    elif tree in ingredients:
-                        wrong.append(tree)
-                self.memory.user_update(sentence=sentence, right=right, wrong=wrong, matched=len(right) > len(wrong),
-                                        complete=self.context.is_complete())
-                return
-            elif intent == Intent.Y_N or intent == Intent.Y_N_INGREDIENT:
-                positive_sentence = lu.is_positive(sentence)
-                # print(positive_sentence)
-                if positive_sentence is not None:
-                    if intent == Intent.Y_N:
-                        matched = (positive_sentence and expected == 'yes') or (
-                                not positive_sentence and expected == 'no')
-                        self.memory.user_update(sentence=sentence, matched=matched,
-                                                complete=self.context.is_complete())
-                    else:
-                        matched = (positive_sentence == expected[0])
-                        if positive_sentence and expected[0] is True:
-                            self.context.set_ingredient(frames.IngredientFrame(expected[1]))
-                        self.memory.user_update(sentence=sentence, matched=matched,
-                                                complete=self.context.is_complete())
-                else:
-                    self.memory.user_update(sentence=sentence, matched=False,
+            match intent:
+                case Intent.HANDSHAKE:
+                    self.memory.user_update(sentence=sentence)
+                    return
+                case Intent.INGREDIENTS:
+                    right, wrong = [], []
+                    for tree in subtrees:
+                        if tree in expected:
+                            right.append(tree)
+                            self.context.set_ingredient(frames.IngredientFrame(str(tree)))
+                        elif tree in ingredients:
+                            wrong.append(tree)
+                    self.memory.user_update(sentence=sentence, right=right, wrong=wrong, matched=len(right) > len(wrong),
                                             complete=self.context.is_complete())
+                    return
+                case Intent.Y_N:
+                    positive_sentence = lu.is_positive(sentence)
+                    # print(positive_sentence)
+                    if positive_sentence is not None:
+                        if intent == Intent.Y_N:
+                            matched = (positive_sentence and expected == 'yes') or (
+                                    not positive_sentence and expected == 'no')
+                            self.memory.user_update(sentence=sentence, matched=matched,
+                                                    complete=self.context.is_complete())
+                        else:
+                            matched = (positive_sentence == expected[0])
+                            if positive_sentence and expected[0] is True:
+                                self.context.set_ingredient(frames.IngredientFrame(expected[1]))
+                            self.memory.user_update(sentence=sentence, matched=matched,
+                                                    complete=self.context.is_complete())
+                    else:
+                        self.memory.user_update(sentence=sentence, matched=False,
+                                                complete=self.context.is_complete())
+                case Intent.Y_N_INGREDIENT:
+                    positive_sentence = lu.is_positive(sentence)
+                    # print(positive_sentence)
+                    if positive_sentence is not None:
+                        if intent == Intent.Y_N:
+                            matched = (positive_sentence and expected == 'yes') or (
+                                    not positive_sentence and expected == 'no')
+                            self.memory.user_update(sentence=sentence, matched=matched,
+                                                    complete=self.context.is_complete())
+                        else:
+                            matched = (positive_sentence == expected[0])
+                            if positive_sentence and expected[0] is True:
+                                self.context.set_ingredient(frames.IngredientFrame(expected[1]))
+                            self.memory.user_update(sentence=sentence, matched=matched,
+                                                    complete=self.context.is_complete())
+                    else:
+                        self.memory.user_update(sentence=sentence, matched=False,
+                                                complete=self.context.is_complete())
+
+
 

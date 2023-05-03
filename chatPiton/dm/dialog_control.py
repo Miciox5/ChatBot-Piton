@@ -18,7 +18,7 @@ class DialogControl:
 
         if mem.empty:  # la prima interazione è HANDSHAKE --> memoria vuota
             self._dialog_context_model.memory.system_update(intent=Intent.HANDSHAKE)
-            return self._response_generator.greeting(self._dialog_context_model.context.name)
+            return self._response_generator.greeting()
         else:
             right = mem['right'].values[-1]
             wrong = mem['wrong'].values[-1]
@@ -34,10 +34,11 @@ class DialogControl:
                 self._dialog_context_model.memory.system_update(intent=Intent.INGREDIENTS, expected=potions[potion])
                 return self._response_generator.initiate_exam(potion)
             else:  # entro qui a partire dalla terza volta che Piton parla
+
                 if len(mem['matched'].values) > 3:
                     end_eval_matches = mem['matched'].values[-1] is False and (
                             mem['matched'].values[-1] == mem['matched'].values[-2] == mem['matched'].values[-3])
-                    # print("end eval: ", end_eval_matches)
+                    print("end eval: ", end_eval_matches)
                 if complete == 100 or self._n_questions < 0 or end_eval_matches:  # il frame è stato completato --> passo alla valutazione
                     self._dialog_context_model.memory.system_update(intent=Intent.EVALUATION)
                     return self._response_generator.eval(complete, mem['matched'].values)
@@ -65,7 +66,8 @@ class DialogControl:
                         # print('wrong: ',set(wrong))
                         # print('set ingredienti', set(potions[potion]))
                     elif i == Intent.Y_N_INGREDIENT:  # scelgo un ingrediente a caso dalla lista degli ingredienti (escludendo quelli già elencati e nel frame) --> in 'expected' Yes/No
-                        ings = [i for i in ingredients if i not in self._dialog_context_model.context.get_ingredients()]
+                        ings = [i for i in ingredients if
+                                i not in self._dialog_context_model.context.get_ingredients()]
                         ingredient = ings[random.randrange(len(ings))]
                         expected = [ingredient in potions[potion], ingredient]
                     else:  # domanda del tipo Yes/No
