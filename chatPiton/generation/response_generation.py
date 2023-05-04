@@ -84,7 +84,7 @@ class ResponseGenerator:
                       'You are just as useless as your father Potter, you failed this exam.'][
                 random.randrange(3)]
         answer += ' Your final evaluation for the Potion\'s class is ' + str(evaluation) + '.'
-        return ['Out of all expectations, this exam is over.', answer, '.I have already spent enough time on you.']
+        return ['Out of all expectations, this exam is over.', answer, 'I have already spent enough time on you.']
 
     # per risposte sbagliate
     def refusal(self):

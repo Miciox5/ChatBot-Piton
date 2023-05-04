@@ -63,12 +63,12 @@ class DialogContextModel:
     def __call__(self, *args, **kwargs):
         # TO-DO: Import del file json con le pozioni all'interno
         potion = random.choice(list(potions))
-
+        potion_ingrs = potions[potion]
         # potion = random.choice(get_all_potions())
         #print(potion)
 
         # Put all data about those potion in frame struct
-        self.context = frames.PotionFrame(potion)
+        self.context = frames.PotionFrame(potion, potion_ingrs)
 
     def process_input(self, sentence):
         intent = self.memory.get_data_frame()['intent'].values[-1]
@@ -82,6 +82,8 @@ class DialogContextModel:
             elif intent == Intent.INGREDIENTS:
                 right, wrong = [], []
                 for tree in subtrees:
+                    print(tree)
+                    print(expected)
                     if tree in expected:
                         right.append(tree)
                         self.context.set_ingredient(frames.IngredientFrame(str(tree)))

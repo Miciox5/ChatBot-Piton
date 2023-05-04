@@ -28,9 +28,10 @@ def check_sentence(sentence):
 def parse_sentence(sentence):
     doc = nlp(sentence)
 
-    ingredients = [np.text
+    parse_ingredients = [np.text
                    for nc in doc.noun_chunks
                    for np in [nc, doc[nc.root.left_edge.i: nc.root.right_edge.i + 1]]]
+
 
     # for nc in doc.noun_chunks:
     #     print('nc: ' + str(nc))
@@ -39,12 +40,12 @@ def parse_sentence(sentence):
     #     print('root right: ' + str(nc.root.left_edge.i + 1))
     #     print('doc[]: ' + str(doc[nc.root.left_edge.i: nc.root.right_edge.i + 1]))
     #     print()
-    #
-    # print(ingredients)
+
+    # print(parse_ingredients)
 
     #displacy.serve(doc, style="dep", host='127.0.0.1')
 
-    return list(dict.fromkeys(ingredients))
+    return list(dict.fromkeys(parse_ingredients))
 
 
 def is_positive(sentence):

@@ -31,16 +31,19 @@ class Frame:
 
 
 class PotionFrame(Frame):
-    def __init__(self, name):
+    def __init__(self, name, ingredients: list):
         super().__init__()
         self.name = name
         self._ingredients = []
+        for ing in ingredients:
+            ing = str(ing.replace("\'", ""))
+            self._ingredients.append(ing)
 
     def set_ingredient(self, ingredient):
         self._ingredients.append(ingredient)
 
     def get_ingredients(self):
-        return [ingredient.name for ingredient in self._ingredients]
+        return [ingredient for ingredient in self._ingredients]
 
     def is_complete(self):
         return float(len(self._ingredients) * 100 / len(self.__dict__.items()))
